@@ -54,7 +54,7 @@ classDiagram
     Shape <|.. BuggyShallowCircle
     Circle --> Point : owns (deep-copied)
     Rectangle --> Point : owns (deep-copied)
-    BuggyShallowCircle --> Point : owns (BUG: shared on copy)
+    BuggyShallowCircle --> Point : owns (BUG - shared on copy)
 
     class ShapePrototypeCache {
         -prototypes : Map~String,Shape~

@@ -50,7 +50,7 @@ sequenceDiagram
     participant DB as H2 database
 
     App->>Repo: findByAuthor("Bloch")
-    Note over Repo,Proxy: App calls the interface;<br/>Spring wired the proxy in at startup
+    Note over Repo,Proxy: App calls the interface<br/>Spring wired the proxy in at startup
     Repo->>Proxy: findByAuthor("Bloch")
     Proxy->>Proxy: parse method name → derive JPQL
     Proxy->>DB: SELECT * FROM book_entity WHERE author = ?

@@ -47,7 +47,7 @@ classDiagram
         +timeout(Duration) Builder
         +build() HttpRequest
     }
-    HttpRequest +-- Builder : static nested
+    HttpRequest *-- Builder : static nested class
     Builder ..> HttpRequest : constructs
 
     class MealBuilder {
