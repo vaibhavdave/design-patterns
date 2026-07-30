@@ -35,9 +35,10 @@ classDiagram
         +int id
         +String payload
     }
+    class Queue["BlockingQueue"]
     Producer ..> Task : creates
-    Producer --> "BlockingQueue~Task~" : put()
-    Consumer --> "BlockingQueue~Task~" : take()
+    Producer --> Queue : put()
+    Consumer --> Queue : take()
     Consumer ..> Task : processes
 ```
 
