@@ -23,11 +23,12 @@ public class OrderService {
     }
 
     public void cancelOrder(String orderId) {
+        if (orderId == null || orderId.isBlank()) {
+            logger.warn("cancelOrder called with invalid orderId");
+            throw new IllegalArgumentException("orderId must not be blank");
+        }
         try {
             logger.info("Cancelling order " + orderId);
-            if (orderId == null || orderId.isBlank()) {
-                throw new IllegalArgumentException("orderId must not be blank");
-            }
             logger.info("Order " + orderId + " cancelled successfully");
         } catch (Exception e) {
             logger.error("Failed to cancel order " + orderId, e);

@@ -20,7 +20,7 @@ public class ConsoleLogger implements Logger {
 
     @Override
     public void error(String message, Throwable cause) {
-        System.out.printf("[ERROR] [%s] %s — %s%n", name, message, cause.getMessage());
+        System.out.printf("[ERROR] [%s] %s — %s%n", name, message, cause.toString());
     }
 
     @Override

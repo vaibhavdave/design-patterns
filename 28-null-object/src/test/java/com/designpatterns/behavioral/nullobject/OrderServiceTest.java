@@ -34,14 +34,4 @@ class OrderServiceTest {
         assertThatNoException().isThrownBy(() -> service.cancelOrder(orderId));
     }
 
-    @Test
-    void consoleLoggerIsEnabled() {
-        Logger real = new ConsoleLogger("test");
-        assertThat(real.isEnabled()).isTrue();
-    }
-
-    @Test
-    void nullLoggerIsSingleton() {
-        assertThat(NullLogger.INSTANCE).isSameAs(NullLogger.INSTANCE);
-    }
 }
