@@ -74,13 +74,14 @@ Requires JDK 21+ (a Gradle toolchain will provision one automatically if needed)
 | [26](26-mvc) | MVC | ★★★★☆ | Separate state, presentation, and input handling — classic desktop MVC and Spring REST MVC |
 | [27](27-producer-consumer) | Producer-Consumer | ★★★★☆ | Decouple work generation from work processing via a thread-safe queue, with real backpressure |
 | [28](28-null-object) | Null Object | ★☆☆☆☆ | Replace absent collaborators with a do-nothing object so callers never write `if (x != null)` |
+| [29](29-specification) | Specification | ★★★☆☆ | Encapsulate business rules as composable objects with `and`/`or`/`not` — no if/else soup |
 
 ## Project structure
 
 ```
 design-patterns/
 ├── build.gradle.kts              # shared conventions: Java 21 toolchain, JUnit5 + AssertJ
-├── settings.gradle.kts           # declares all 28 modules
+├── settings.gradle.kts           # declares all 29 modules
 ├── gradle/libs.versions.toml     # version catalog (Spring Boot BOM, H2, etc.)
 ├── 01-singleton/
 │   ├── build.gradle.kts
