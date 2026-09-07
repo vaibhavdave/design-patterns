@@ -94,17 +94,27 @@ class SpecificationTest {
 
     @Nested
     class CombinatorRecords {
-        @Test void andSpecIsRecord() {
-            var spec = new AndSpecification<>(OrderSpecification.isHighValue(), OrderSpecification.isLargeOrder());
-            assertThat(spec.left()).isSameAs(OrderSpecification.isHighValue());
+        @Test void andEvaluatesBothSides() {
+            Order both = new Order(1500.0, 25, false);  // high-value AND large
+            Order onlyHigh = new Order(1500.0, 5, false);
+            Order onlyLarge = new Order(300.0, 25, false);
+            var spec = new AndSpecification<>(
+                    OrderSpecification.isHighValue(), OrderSpecification.isLargeOrder());
+            assertThat(spec.isSatisfiedBy(both)).isTrue();
+            assertThat(spec.isSatisfiedBy(onlyHigh)).isFalse();
+            assertThat(spec.isSatisfiedBy(onlyLarge)).isFalse();
         }
-        @Test void orSpecIsRecord() {
-            var spec = new OrSpecification<>(OrderSpecification.isHighValue(), OrderSpecification.isLargeOrder());
-            assertThat(spec.right()).isSameAs(OrderSpecification.isLargeOrder());
+        @Test void orEvaluatesAtLeastOne() {
+            var spec = new OrSpecification<>(
+                    OrderSpecification.isHighValue(), OrderSpecification.isLargeOrder());
+            assertThat(spec.isSatisfiedBy(HIGH_VALUE)).isTrue();
+            assertThat(spec.isSatisfiedBy(LARGE)).isTrue();
+            assertThat(spec.isSatisfiedBy(SMALL)).isFalse();
         }
-        @Test void notSpecIsRecord() {
+        @Test void notInvertsEvaluation() {
             var spec = new NotSpecification<>(OrderSpecification.isHighValue());
-            assertThat(spec.wrapped()).isSameAs(OrderSpecification.isHighValue());
+            assertThat(spec.isSatisfiedBy(HIGH_VALUE)).isFalse();
+            assertThat(spec.isSatisfiedBy(SMALL)).isTrue();
         }
     }
 }
