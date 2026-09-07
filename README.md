@@ -65,7 +65,7 @@ Requires JDK 21+ (a Gradle toolchain will provision one automatically if needed)
 | [22](22-visitor) | Visitor | ★★★★☆ | Add new operations to a class hierarchy without modifying it — double dispatch |
 | [23](23-interpreter) | Interpreter | ★★★★★ | Build and evaluate a tiny expression language — the idea behind parsers and rule engines |
 
-### Capstones — enterprise & concurrency patterns that tie it together
+### Capstones — enterprise & concurrency patterns that tie it all together
 
 | # | Pattern | Difficulty | What it teaches |
 |---|---|---|---|
@@ -91,7 +91,7 @@ design-patterns/
 │       └── test/java/...
 ├── 02-factory-method/
 ...
-└── 27-producer-consumer/
+└── 29-specification/
 ```
 
 ## Why Gradle multi-module
