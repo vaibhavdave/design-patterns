@@ -26,8 +26,12 @@ public final class OrderSpecification {
         return isHighValue().or(isLargeOrder().and(largeEnough));
     }
 
-    /** Express but not rush (amount <= threshold). Demonstrates .not(). */
+    /**
+     * Express but not rush (amount <= threshold). Demonstrates .not() composition.
+     * Caveat: {@code isRushOrder().not()} is composed once, statically — not rebuilt
+     * on every call to {@code isSatisfiedBy}.
+     */
     public static Specification<Order> isStandardExpress() {
-        return (Order o) -> o.isExpress() && isRushOrder().not().isSatisfiedBy(o);
+        return isRushOrder().not().and(o -> o.isExpress());
     }
 }
